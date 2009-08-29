@@ -1,0 +1,272 @@
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (90.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (130.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090829171401)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090829171401')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-08-29 10:16:43) [GET]
+  [4;36;1mUser Exists (10.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" IS NULL) LIMIT 1[0m
+  [4;35;1mUser Exists (0.0ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" IS NULL) LIMIT 1[0m
+Rendering users/new
+Completed in 3105ms (View: 30, DB: 10) | 200 OK [http://localhost/register]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-08-29 10:17:00) [GET]
+Rendering users/new
+Completed in 51ms (View: 11, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-08-29 10:17:14) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"sandiego", "password"=>"sandiego", "login"=>"sarahmei", "email"=>"sarahmei@gmail.com"}, "commit"=>"Sign up", "authenticity_token"=>"84N8YCcLbypfbyL553Ys98xeGa7gXBRbnt+D5ZhZrTA="}
+  [4;36;1mUser Exists (0.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'sarahmei') LIMIT 1[0m
+  [4;35;1mUser Exists (0.0ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'sarahmei@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Create (0.0ms)[0m   [0;1mINSERT INTO "users" ("name", "salt", "updated_at", "activated_at", "crypted_password", "remember_token_expires_at", "activation_code", "remember_token", "login", "email", "created_at") VALUES('', '849d568286b2e060f1cd1702c1ca5f7236b4e667', '2009-08-29 17:17:14', NULL, '7d667a067352e2b9db8285ea16d5b77a595f676a', NULL, '6d280d495d4382ba08c32ad233ba58545acbbc91', NULL, 'sarahmei', 'sarahmei@gmail.com', '2009-08-29 17:17:14')[0m
+Redirected to http://localhost:3000/
+Completed in 211ms (DB: 0) | 302 Found [http://localhost/users]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 10:23:30) [GET]
+Rendering sessions/new
+Completed in 40ms (View: 30, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2009-08-29 10:23:38) [GET]
+Redirected to http://localhost:3000/
+Completed in 40ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 10:39:41) [GET]
+Rendering sessions/new
+Completed in 2674ms (View: 2664, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 10:44:41) [GET]
+Rendering sessions/new
+Completed in 20ms (View: 10, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-08-29 10:44:45) [GET]
+Rendering users/new
+Completed in 71ms (View: 31, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-08-29 10:45:02) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"+AUL1Ve8wCP6X0nB9wmdZ761oLdBGRLOAqLyWx6mvE8=", "login"=>"sarahmei", "password"=>"sandiego"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE (login = 'sarahmei' and activated_at IS NOT NULL) LIMIT 1[0m
+Failed login for 'sarahmei' from 127.0.0.1 at Sat Aug 29 17:45:02 UTC 2009
+Rendering sessions/new
+Completed in 40ms (View: 10, DB: 0) | 200 OK [http://localhost/session]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-08-29 10:45:17) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"+AUL1Ve8wCP6X0nB9wmdZ761oLdBGRLOAqLyWx6mvE8=", "login"=>"sarahmei", "password"=>"lkj;lkj"}
+  [4;35;1mUser Load (10.0ms)[0m   [0mSELECT * FROM "users" WHERE (login = 'sarahmei' and activated_at IS NOT NULL) LIMIT 1[0m
+Failed login for 'sarahmei' from 127.0.0.1 at Sat Aug 29 17:45:18 UTC 2009
+Rendering sessions/new
+Completed in 40ms (View: 0, DB: 10) | 200 OK [http://localhost/session]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-29 10:49:31) [GET]
+  Parameters: {"activation_code"=>"6d280d495d4382ba08c32ad233ba58545acbbc91"}
+
+ActionController::RoutingError (No route matches "/users/1/activate" with {:method=>:get}):
+  c:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  c:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  c:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  c:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  c:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  c:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  c:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  c:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  c:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  c:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mUser Update (10.0ms)[0m   [0mUPDATE "users" SET "activated_at" = '2009-08-29 17:51:41', "activation_code" = NULL, "updated_at" = '2009-08-29 17:51:41' WHERE "id" = 1[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 10:51:54) [GET]
+Rendering sessions/new
+Completed in 10ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-08-29 10:51:59) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"+AUL1Ve8wCP6X0nB9wmdZ761oLdBGRLOAqLyWx6mvE8=", "login"=>"sarahmei", "password"=>"sandiego"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE (login = 'sarahmei' and activated_at IS NOT NULL) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 130ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 10:52:00) [GET]
+Rendering sessions/new
+Completed in 10ms (View: 10, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 10:59:49) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered users/_user_bar (310.0ms)
+Completed in 341ms (View: 341, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:03:40) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_user_bar (0.0ms)
+Completed in 1682ms (View: 1682, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:04:57) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_user_bar (0.0ms)
+Completed in 20ms (View: 20, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-08-29 11:05:07) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"EtTtOc94JaJxKXe2x8ZtfNld51JNVwJlPlgTghAiQ3o=", "login"=>"sarahmei", "password"=>"sandiego"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE (login = 'sarahmei' and activated_at IS NOT NULL) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 40ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:05:07) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered users/_user_bar (120.0ms)
+Completed in 130ms (View: 120, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:08:53) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered users/_user_bar (251.0ms)
+Completed in 291ms (View: 281, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:09:31) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered users/_user_bar (30.0ms)
+Completed in 60ms (View: 50, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:10:19) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered users/_user_bar (41.0ms)
+Completed in 51ms (View: 51, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2009-08-29 11:10:23) [GET]
+  Parameters: {"action"=>"destroy", "controller"=>"sessions"}
+Redirected to http://localhost:3000/
+Completed in 30ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:10:25) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_user_bar (0.0ms)
+Completed in 10ms (View: 10, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:10:33) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_user_bar (10.0ms)
+Completed in 30ms (View: 10, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-08-29 11:10:34) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_user_bar (10.0ms)
+Completed in 100ms (View: 30, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:10:36) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_user_bar (10.0ms)
+Completed in 10ms (View: 10, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:10:37) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_user_bar (0.0ms)
+Completed in 10ms (View: 10, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:11:09) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_user_bar (0.0ms)
+Completed in 190ms (View: 190, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:11:12) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_user_bar (10.0ms)
+Completed in 10ms (View: 10, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:11:15) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_user_bar (0.0ms)
+Completed in 10ms (View: 10, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-08-29 11:11:16) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_user_bar (0.0ms)
+Completed in 10ms (View: 10, DB: 0) | 200 OK [http://localhost/]
