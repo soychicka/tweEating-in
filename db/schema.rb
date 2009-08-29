@@ -9,13 +9,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090829205906) do
+ActiveRecord::Schema.define(:version => 20090829220545) do
 
   create_table "food_items", :force => true do |t|
     t.string   "name"
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ingredients", :force => true do |t|
+    t.integer  "food_item_id"
+    t.float    "quantity"
+    t.integer  "unit_id"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inventories", :force => true do |t|
+    t.string   "name"
+    t.text     "notes"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pantry_items", :force => true do |t|
+    t.integer  "food_item_id"
+    t.float    "quantity"
+    t.integer  "unit_id"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recipes", :force => true do |t|
+    t.string   "name"
+    t.text     "instructions"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
