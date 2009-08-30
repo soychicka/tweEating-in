@@ -2,12 +2,12 @@
 module ApplicationHelper
   def setup_recipe(recipe)
     returning(recipe) do |r|
-      r.ingredients.build if r.ingredients.empty?
+      (r.ingredients.length...7).each {r.ingredients.build}
     end
   end
   def setup_inventory(inventory)
     returning(inventory) do |i|
-      i.pantry_items.build if i.pantry_items.empty?
+      (i.pantry_items.length...7).each {i.pantry_items.build}
     end
   end
 end
