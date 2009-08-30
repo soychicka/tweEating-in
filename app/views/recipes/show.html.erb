@@ -1,0 +1,32 @@
+<p>
+  <b>Name:</b>
+  <%=h @recipe.name %>
+</p>
+
+<p>
+  <b>Ingredients:</b>
+<table>
+  <tr>
+    <td>Quantity</td>
+    <td>Unit</td>
+    <td>Name</td>
+    <td>Notes</td>
+  </tr>
+  <%= render :partial => "ingredient", :collection => @recipe.ingredients %>
+</table>
+  
+</p>
+
+<p>
+  <b>Instructions:</b>
+  <%=h @recipe.instructions %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @recipe.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', recipes_path %>
