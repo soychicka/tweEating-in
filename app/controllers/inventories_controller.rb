@@ -44,6 +44,7 @@ class InventoriesController < ApplicationController
     
     @inventory = Inventory.new
     @inventory.user = current_user
+    @inventory.build_suggested_items
 
     respond_to do |format|
       format.html # new.html.erb

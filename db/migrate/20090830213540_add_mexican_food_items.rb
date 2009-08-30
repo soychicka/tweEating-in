@@ -1,14 +1,10 @@
 class AddMexicanFoodItems < ActiveRecord::Migration
   @@item_names = [
     "Cilantro",
-    "Tomato",
-    "Onion",
     "Shrimp",
     "Strip Steak",
-    "Cheese",
     "Sour Cream",
     "Black Beans",
-    "Cumin",
     "Cayenne",
     "Guajillo",
     "Lettuce",
