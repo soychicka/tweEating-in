@@ -12,6 +12,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :session
 
+  map.auto_complete ':controller/:action',
+    :requirements => { :action => /auto_complete_for_\S+/ },
+    :conditions => { :method => :post }
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

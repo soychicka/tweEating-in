@@ -6,8 +6,11 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>tweEating-in: Recipes: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+  <%= javascript_include_tag :all, :cache => true %>
 </head>
 <body>
+
+<%= render :partial => 'users/user_bar' %>
 
 <p style="color: green"><%= flash[:notice] %></p>
 

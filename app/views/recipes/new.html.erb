@@ -22,7 +22,7 @@
     <tr>
       <td><%= ingredient_form.text_field :quantity, :size => 10 %></td>
       <td><%= ingredient_form.select(:unit_id, Unit.all.collect {|u| [ u.name, u.id ] }) %></td>
-      <td><%= ingredient_form.text_field :food_item_id %></td>
+      <td><%= ingredient_form.text_field_with_auto_complete(:food_item_name) %></td>
       <td><%= ingredient_form.text_field :notes %></td>
     </tr>
     <% end %>

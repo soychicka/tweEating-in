@@ -2,7 +2,7 @@
 module ApplicationHelper
   def setup_recipe(recipe)
     returning(recipe) do |r|
-      (r.ingredients.length...7).each {r.ingredients.build} if r.ingredients.empty?
+      r.ingredients.build if r.ingredients.empty?
     end
   end
 end
