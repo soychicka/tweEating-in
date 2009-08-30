@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       else
         flash[:notice] = "Error signing in!"
       end
-      redirect_back_or_default('/')
+      redirect_back_or_default('/recipes')
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
