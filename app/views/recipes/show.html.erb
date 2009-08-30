@@ -7,10 +7,10 @@
   <b>Ingredients:</b>
 <table>
   <tr>
-    <td>Quantity</td>
-    <td>Unit</td>
-    <td>Name</td>
-    <td>Notes</td>
+    <th>Quantity</th>
+    <th>Unit</th>
+    <th>Name</th>
+    <th>Notes</th>
   </tr>
   <%= render :partial => "ingredient", :collection => @recipe.ingredients %>
 </table>
@@ -21,12 +21,6 @@
   <b>Instructions:</b>
   <%=h @recipe.instructions %>
 </p>
-
-<p>
-  <b>User:</b>
-  <%=h @recipe.user_id %>
-</p>
-
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>

@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :recipes
-
+  map.resources :ingredients
+  map.resources :inventories
+  map.resources :pantry_items
 
   map.root :controller => 'sessions', :action => 'new'
 

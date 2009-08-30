@@ -1,0 +1,28 @@
+<h1>Your Kitchen Inventory</h1>
+
+<p>
+  <b>Name:</b>
+  <%=h @inventory.name %>
+</p>
+
+<p>
+  <b>Pantry Items:</b>
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Unit</th>
+    <th>Name</th>
+    <th>Notes</th>
+  </tr>
+  <%= render :partial => "pantry_item", :collection => @inventory.pantry_items %>
+</table>
+
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @inventory.notes %>
+</p>
+
+<%= link_to 'Edit', edit_inventory_path(@inventory) %> |
+<%= link_to 'Back', inventories_path %>

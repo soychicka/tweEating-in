@@ -1,0 +1,40 @@
+<% form_for setup_inventory(@inventory) do |inventory_form| %>
+  <%= inventory_form.error_messages %>
+  <%= inventory_form.hidden_field :user_id %>
+
+  <p>
+    <%= inventory_form.label :pantry_items, "What's in your kitchen?" %><br />
+  <table>
+    <tr>
+      <th>Quantity</td>
+      <th>Unit</td>
+      <th>Food name</td>
+      <th>Notes</td>
+    </tr>
+    <div id="pantry_items_area">
+    <% inventory_form.fields_for :pantry_items do |item_form| %>
+    <tr>
+      <td><%= item_form.text_field :quantity, :size => 10 %></td>
+      <td><%= item_form.select(:unit_id, Unit.all.collect {|u| [ u.name, u.id ] }) %></td>
+      <td><%= item_form.text_field_with_auto_complete(:food_item_name) %></td>
+      <td><%= item_form.text_field :notes %></td>
+    </tr>
+    <% end %>
+    </div>
+    <tr><td colspan="2">
+    <%= link_to_remote 'Add another item', :update => 'pantry_items_area',
+      :url => { :controller => 'pantry_items', :action => 'new', :inventory_id => @inventory.id },
+      :method => :get %>
+    </td></tr>
+  </table>
+  </p>
+
+  <p>
+    <%= inventory_form.label :notes %><br />
+    <%= inventory_form.text_area :notes, :cols => 70, :rows => 10 %>
+  </p>
+
+  <p>
+    <%= inventory_form.submit 'Submit' %>
+  </p>
+<% end %>
