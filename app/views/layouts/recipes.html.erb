@@ -8,10 +8,64 @@
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
+	<div class="container">
+		<div id="header" class="span-24 last">
 
+		      <div id="headerLogo" style="float:left"><img src="../images/headerLogo.png" alt="Book header image" id="header-image"></div>
+		    	<div id="authenticationWidget">
+
+<%= render :partial => 'users/user_bar' %>
 <p style="color: green"><%= flash[:notice] %></p>
+</div>
+<div id="navBar">Home | Recipes | Inventory | Search | etc.</div>
+	</div>
+	<div id="content">
+		<div id="sidebar" class="span-6" >
+			<form>
+				<fieldset>
+					<label>Cuisine
+					<select>
+					<option><input type="checkbox"/>Assyrian</option>
+					<option><input type="checkbox"/>Afghani</option>
+					<option><input type="checkbox"/>American</option>
+					<option><input type="checkbox"/>etc.</option>
 
+					
+					
+					</select>
+					</label><br>
+					<label>Course
+					<select>
+					<option><input type="checkbox"/>Entree</option>
+					<option><input type="checkbox"/>Side (vegetable)</option>
+					<option><input type="checkbox"/>Side ()</option>
+					<option><input type="checkbox"/>etc.</option>
+
+					
+					
+					</select>
+					</label><br>
+					<label>Category 
+					<select>
+					<option><input type="checkbox"/>Noodles/Pasta</option>
+					<option><input type="checkbox"/>Soup</option>
+					<option><input type="checkbox"/>Salad</option>
+					<option><input type="checkbox"/>etc.</option>
+
+					
+					
+					</select>
+					</label><br>
+					<p> Note: The above 2 could be dropped in favor of tags, but for new users, tags would make searching more difficult, as they are an unknown entity.</p>
+					<label>Tags 
+					<input type="text" name="searchTags"></label><br>
+					<label>Going shopping? <input type="radio" name="shopping" value="yes">Yes</input><input type="radio" name="shopping" value="no">No</input></label><br>
+					<label>In season only? <input type="radio" name="shopping" value="yes">Yes</input><input type="radio" name="shopping" value="no">No</input></label>
+					</fieldset>
+		</div><div id="main" class="span-17" >
 <%= yield %>
 
+</div>
+</div></div>
 </body>
 </html>

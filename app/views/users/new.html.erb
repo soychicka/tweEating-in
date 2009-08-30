@@ -1,4 +1,7 @@
-<h1>Sign up as a new user</h1>
+<div id="registerUser">
+	<h1>Sign up as a new user</h1>
+
+<p>This is displayed in a boxy-box that pops up below and bound to the original link</p>
 <% @user.password = @user.password_confirmation = nil %>
 
 <%= error_messages_for :user %>
@@ -16,4 +19,5 @@
 <%= f.password_field :password_confirmation %></p>
 
 <p><%= submit_tag 'Sign up' %></p>
+</div>
 <% end -%>

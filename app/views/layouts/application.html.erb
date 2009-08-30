@@ -7,14 +7,62 @@
   <title>tweEating-in</title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%#= javascript_include_tag 'jquery' %>
+<%= javascript_include_tag :defaults %>
 </head>
-<body>
-  
+<body class="nutmeg">
+	<div class="container">
+		<div id="header" class="span-24 last">
+
+		      <div id="headerLogo" style="float:left"><img src="images/headerLogo.png" alt="Book header image" id="header-image"></div>
+		    	<div id="authenticationWidget">
+
 <%= render :partial => 'users/user_bar' %>
-
 <p style="color: green"><%= flash[:notice] %></p>
-
+</div>
+<div id="navBar">Home | Recipes | My Kitchen | Shopping | Search | etc.</div>
+	</div>
+	<div id="content">
+<div id="main" class="span-17" style="min-height:400px">
+<div id="something2" class="span-17 inner">
+	<h3>The Global Dish:</h3>
+<div id="todaysDish" class="span-5"><img src="images/caprese.jpg" style="width:200px;"/>
+		<p><strong>192 people</strong> from 27 countries are making <a href="#">this</a> for dinner today. <a href="iGoSomewhere.html">Are you in?</a></p></div>
+	<div class="span-11">	<p><img src="images/map.png" />
+	</div></div>
+	<div id="something1" class="span-17 inner"><h3>Try this tonight:</h3>
+		<img src="../images/carneAsada.png" >
+		<img src="../images/tacos-m.png">
+		<img src="../images/snapper.png">
+		<img src="../images/pasta-salad2.png">
+	</div>
+	<div id="something3" class="span-17 inner">
+		<h3>Analyze your food</h3>	
+		<div style="float:left">
+			<p>Purchasing Habits</p>
+			<p>Nutrition Information</p>
+			<p>Diversify your Mealfolio</p>
+			</div>
+		<img src="../images/memeChart.jpg">
+		</div>
 <%= yield %>
+</div>
+<div id="sidebar" class="span-6" style="min-height:400px">
+	<div class="box"><h3>Spoiler alert</h3>
+		<p>Uh-oh! We think the following items should be used up or frozen really, <i>really</i> soon:
+			<ul style="list-style:none;display: inline;">
+			<li> <img src ="images/ingredients/tomatillos.png" style="height:50px;"><!--Cream (9/02/09)--></li>
+			<li> <img src ="../images/ingredients/jack.png" style="height:50px;"><!--Cream (9/02/09)--><img src="../images/snowflake.gif"></li>
+<li> <img src ="images/ingredients/creamer.png" style="width:50px;margin-left:30px;"><!--Cream (9/02/09)--></li>
 
+			</ul>
+			<p style=" margin-top:45px;">Use it to make <a href="suggestedDish"><img src="images/salsa_verde.png" style="width:100px;">Gooey Salsa Verde Cheese Dip</a> or
+		<a href="spoilerSuggestions.html">see other ways to use it/them up!</a></p>
+			</div>
+
+		<div class="box">
+	Side Content #2	</div>
+			<div class="box"><img src="../images/SW-10.png" style="width:250px;"></div>
+			
+</div></div></div>
 </body>
 </html>
