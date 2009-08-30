@@ -10,8 +10,16 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty?
+      user = User.authenticate(params[:user][:login], params[:user][:password])
+      if user
+        self.current_user = user
+        new_cookie_flag = (params[:remember_me] == "1")
+        handle_remember_cookie! new_cookie_flag
+        flash[:notice] = "Thanks for signing up!  You are now logged in."
+      else
+        flash[:notice] = "Error signing in!"
+      end
       redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
