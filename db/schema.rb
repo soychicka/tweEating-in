@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090830182851) do
+ActiveRecord::Schema.define(:version => 20090830201634) do
 
   create_table "food_items", :force => true do |t|
     t.string   "name"
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(:version => 20090830182851) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "shopping_lists", :force => true do |t|
+    t.string   "user_id"
+    t.string   "recipe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "notes"
+  end
 
   create_table "units", :force => true do |t|
     t.string   "name"

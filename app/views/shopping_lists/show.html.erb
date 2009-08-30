@@ -1,0 +1,17 @@
+<p>
+  <h1>Shopping List</h1>
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Unit</th>
+    <th>Name</th>
+    <th>Notes</th>
+  </tr>
+  <%= render :partial => "list_item", :collection => @shopping_list.list_items %>
+</table>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @shopping_list.notes %>
+</p>
