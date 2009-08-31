@@ -1,3 +1,4 @@
+<%= render :partial => 'sidebar_filters' %>
 <h1>My recipe box</h1>
 
 <table>
@@ -9,12 +10,11 @@
 
 <% @recipes.each do |recipe| %>
   <tr>
-    <td><%=h recipe.name %></td>
-    <td><%=h recipe.instructions %></td>
-    <td><%=h recipe.user_id %></td>
-    <td><%= link_to 'Show', recipe %></td>
-    <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-    <td><%= link_to 'Destroy', recipe, :confirm => 'Are you sure?  I mean "DESTROYYYYYY" in the "I am Sparta" sense.  Gone.  Forever.   So... are you really sure?', :method => :delete %></td>
+    <td><%= link_to h(recipe.name), recipe %></td>
+    <td><%=h recipe.instructions.empty? ? '' : (recipe.instructions.slice(0,120) + '...') %></td>
+    <td><%=h recipe.user.login %></td>
+    <td><%= link_to image_tag('/images/controls/edit.gif'), edit_recipe_path(recipe) %></td>
+    <td><%= link_to image_tag('/images/controls/no.gif'), recipe, :confirm => 'Are you sure?  I mean "DESTROYYYYYY" in the "I am Sparta" sense.  Gone.  Forever.   So... are you really sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

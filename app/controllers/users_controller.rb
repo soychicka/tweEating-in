@@ -15,11 +15,11 @@ class UsersController < ApplicationController
         self.current_user = user
         new_cookie_flag = (params[:remember_me] == "1")
         handle_remember_cookie! new_cookie_flag
-        flash[:notice] = "Thanks for signing up!  You are now logged in."
+        #flash[:notice] = "Thanks for signing up!  You are now logged in."
       else
         flash[:notice] = "Error signing in!"
       end
-      redirect_back_or_default('/recipes')
+      redirect_back_or_default('/inventories')
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
