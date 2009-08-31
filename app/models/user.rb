@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_one :inventory
   has_many :recipes
+  has_many :shopping_lists
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

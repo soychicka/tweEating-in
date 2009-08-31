@@ -1,4 +1,13 @@
 class RecipesController < ApplicationController
+  skip_before_filter :verify_authenticity_token,
+    :only => [:auto_complete_for_ingredient_food_item_name]
+  
+  def auto_complete_for_ingredient_food_item_name
+    @food_item_names = 
+      FoodItem.find(:all, :conditions => ['name like ?', "%#{params[:ingredient][:food_item_name]}%"]).collect(&:name)
+    render :inline => "<%= content_tag(:ul, @food_item_names.map {|f| content_tag(:li, h(f))}) %>"
+  end
+  
   # GET /recipes
   # GET /recipes.xml
   def index

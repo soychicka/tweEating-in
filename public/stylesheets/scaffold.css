@@ -412,15 +412,18 @@ li{
 	font-weight:bold;
 }
 
-li
+div.box li
 {
-display: inline;
-list-style-type: none;
 padding-right: 10px;
 width:100px;
 margin:0 auto;
+list-style:none;display: inline;
 }
 
 #something1 img{
 	height:120px;
+}
+#navBar a{
+	color:#fff;
+	text-decoration:none;
 }

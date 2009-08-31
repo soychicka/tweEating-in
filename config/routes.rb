@@ -1,6 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :recipes
-
+  map.resources :ingredients
+  map.resources :inventories
+  map.resources :pantry_items
+  map.resources :shopping_lists
 
   map.root :controller => 'sessions', :action => 'new'
 
@@ -11,6 +14,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
   map.resource :session
+
+  map.auto_complete ':controller/:action',
+    :requirements => { :action => /auto_complete_for_\S+/ },
+    :conditions => { :method => :post }
 
   # The priority is based upon order of creation: first created -> highest priority.
 

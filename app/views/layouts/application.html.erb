@@ -6,8 +6,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>tweEating-in</title>
   <%= stylesheet_link_tag 'scaffold' %>
-  <%#= javascript_include_tag 'jquery' %>
-<%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :all, :cache => true %>
 </head>
 <body class="nutmeg">
 	<div class="container">
@@ -19,7 +18,7 @@
 <%= render :partial => 'users/user_bar' %>
 <p style="color: green"><%= flash[:notice] %></p>
 </div>
-<div id="navBar">Home | Recipes | My Kitchen | Shopping | Search | etc.</div>
+<div id="navBar"><a href="/">Home</a> | <a href="/recipes">Recipes</a> | <a href="/inventories">Inventory </a>| <a href="/recipes">Search </a>| Trends </div>
 	</div>
 	<div id="content">
 <div id="main" class="span-17" style="min-height:400px">
